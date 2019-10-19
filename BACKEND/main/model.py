@@ -31,7 +31,7 @@ user_schema = UserSchema()
 users_schema = UserSchema(many=True)
 
 
-class Slaves(db.Model):
+class Slave(db.Model):
     __tablename__ = 'slaves'
     time_stamp = db.Column(db.String(255))
     data_amount = db.Column(db.String(255))
