@@ -33,9 +33,10 @@ users_schema = UserSchema(many=True)
 
 class Slave(db.Model):
     __tablename__ = 'slaves'
+    slave_id = = db.Column(db.Integer, primary_key=True)
     time_stamp = db.Column(db.String(255))
     data_amount = db.Column(db.String(255))
-    phone = db.Column(db.String(255), primary_key=True)
+    phone = db.Column(db.String(255))
 
     def __init__(self, time_stamp, data_amount, phone):
         self.time_stamp = time_stamp
@@ -45,7 +46,47 @@ class Slave(db.Model):
 class SlaveSchema(ma.Schema):
     class Meta:
         # Fields to expose
-        fields = ('time_stamp', 'data_amount', 'phone')
+        fields = ('slave_id', 'time_stamp', 'data_amount', 'phone')
+
+slave_schema = SlaveSchema()
+slaves_schema = SlaveSchema(many=True)
+
+class Client_trans(db.Model):
+    __tablename__ = 'slaves'
+    slave_id = = db.Column(db.Integer, primary_key=True)
+    time_stamp = db.Column(db.String(255))
+    data_amount = db.Column(db.String(255))
+    phone = db.Column(db.String(255))
+
+    def __init__(self, time_stamp, data_amount, phone):
+        self.time_stamp = time_stamp
+        self.data_amount = data_amount
+        self.phone = phone
+
+class SlaveSchema(ma.Schema):
+    class Meta:
+        # Fields to expose
+        fields = ('slave_id', 'time_stamp', 'data_amount', 'phone')
+
+slave_schema = SlaveSchema()
+slaves_schema = SlaveSchema(many=True)
+
+class Slave_trans(db.Model):
+    __tablename__ = 'slaves'
+    slave_id = = db.Column(db.Integer, primary_key=True)
+    time_stamp = db.Column(db.String(255))
+    data_amount = db.Column(db.String(255))
+    phone = db.Column(db.String(255))
+
+    def __init__(self, time_stamp, data_amount, phone):
+        self.time_stamp = time_stamp
+        self.data_amount = data_amount
+        self.phone = phone
+
+class SlaveSchema(ma.Schema):
+    class Meta:
+        # Fields to expose
+        fields = ('slave_id', 'time_stamp', 'data_amount', 'phone')
 
 slave_schema = SlaveSchema()
 slaves_schema = SlaveSchema(many=True)

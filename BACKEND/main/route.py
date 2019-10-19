@@ -111,20 +111,26 @@ def isUserNameAvail(user_name):
 
 
 
-# @app.route("/doRequest", methods=["POST"])
-# def doRequest():
+@app.route("/doAvail", methods=["POST"])
+def doAvail():
 
-#     request_info = request.json['request_info'].encode('ascii','ignore')
-#     user_id3 = int(request.json['user_id3'].encode('ascii','ignore'))
-#     user_id4 = int(request.json['user_id4'].encode('ascii','ignore'))
-#     request_status = request.json['request_status'].encode('ascii','ignore')
+    time_stamp = request.json['time_stamp'].encode('ascii','ignore')
+    data_amount = int(request.json['data_amount'].encode('ascii','ignore'))
+    phone = int(request.json['phone'].encode('ascii','ignore'))
 
-#     new_request = Request(request_info, user_id3, user_id4, request_status)
+    new_request = Request(time_stamp, data_amount, phone)
 
-#     db.session.add(new_request)
-#     db.session.commit()
-#     return "True"
+    db.session.add(new_request)
+    db.session.commit()
+    return "True"
 
+@app.route("/deleteAvail/<phone>", methods=["DELETE"])
+def delete_Avail(phone):
+    slave = Slave.query.filter_by(phone=phone).first()
+    db.session.delete(slave)
+    db.session.commit()
+
+    return "True"
 
 # @app.route("/isRequestAccepted/<request_id>", methods=["GET"])
 # def isRequestAccepted(request_id):
