@@ -8,6 +8,11 @@ print("welcome to tool......\nenter 1 for setup hadoop and map reduce cluster ..
 engine.say("welcome to tool......enter 1 for setup hadoop and map reduce cluster .......enter 2 for setup dockers")
 engine.runAndWait()
 #mic=sr.Microphone()
+ipc = int(input("enter the client ip : "))
+    k = input("enter the client domain name : ")
+    os.system("ssh-keygen")
+    os.system("ssh-keyscan 192.168.43.{} > known_hosts".format(ipc))
+    os.system("ssh-copy-id 192.168.43.{}".format(ipc))
 #rec=sr.Recognizer()
 #with mic as source:
 print("enter your choice")
@@ -20,13 +25,9 @@ if text==1:
 	engine.say("welcome to hadoop setup...setting hadoop and map reduce cluster....running hcluster file")
 	engine.runAndWait()
 	speech_speak.s()
-elif text==2:
+elif:
 	engine.say("welcome for dockers setup...setting up dockers ")
 	engine.runAndWait()
 	speech_for_docker.sv()
-else:
-	engine.say("sorry sir you have entered wrong choice...exiting from tool")
-	engine.runAndWait()
-	exit()
         
 

@@ -16,17 +16,8 @@ else:
 	print("you have entered wrong choice ...exiting")
 	exit()
 	
-#engine.runAndWait()
-#mic=sr.Microphone()
-#rec=sr.Recognizer()
-#rec.recognize_google
-#with mic as source:
-#    audio=rec.listen(source)
-#    text=rec.recognize_google(audio)
-#    if text=='centos':
-#        
-#    elif text=='ubuntu':
-#        
+subprocess.getoutput("systemctl restart docker")
+	 
 
 
 
