@@ -13,4 +13,4 @@ Collaborators:
 
 2. [Agni Bhattacharyya](https://github.com/pyagni)
 
-3. [Ushita Ghosh](https://github.com/)
+3. [Ushita Ghosh](https://github.com/UshitaG)
