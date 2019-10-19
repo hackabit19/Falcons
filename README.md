@@ -9,8 +9,8 @@ TECH: Hadoop-Spark Cluster, Linux, ETC and Solidity, Python3, Blockchain using E
 
 Collaborators: 
 
-1. [Harshit Singh](https://github.com/helios1101)
+1. [Aman Agarwal](https://github.com/amana632)
 
-2. [Aayushi Diwedi](https://github.com/qwerty1706)
+2. [Agni Bhattacharyya](https://github.com/pyagni)
 
-3. [Ritik Sharma](https://github.com/RSH04)
+3. [Ushita Ghosh](https://github.com/)
