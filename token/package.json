@@ -1,0 +1,19 @@
+{
+  "name": "falcons-token-sale",
+  "version": "1.0.0",
+  "description": "Falcons Token HINT 4.0",
+  "main": "truffle.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "author": "aman",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  },
+  "dependencies": {}
+}
