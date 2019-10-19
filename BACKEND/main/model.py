@@ -11,19 +11,21 @@ class User(db.Model):
     user_name = db.Column(db.String(255))
     phone = db.Column(db.String(255), primary_key=True)
     wallet_add = db.Column(db.String(255))
+    password = db.Column(db.String(255))
     type_s = db.Column(db.String(255))
 
-    def __init__(self, user_id, user_name, phone, wallet_add, type_s):
+    def __init__(self, user_id, user_name, phone, wallet_add, password, type_s):
         self.user_id = user_id
         self.user_name = user_name
         self.phone = phone
         self.wallet_add = wallet_add
+        self.password = password
         self.type_s = type_s
 
 class UserSchema(ma.Schema):
     class Meta:
         # Fields to expose
-        fields = ('user_id', 'user_name', 'phone', 'wallet_add', 'type_s')
+        fields = ('user_id', 'user_name', 'phone', 'wallet_add', 'password', 'type_s')
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
