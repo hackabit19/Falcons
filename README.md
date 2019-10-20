@@ -7,6 +7,13 @@ Our idea solves the problem of the central cloud system which exists in the mark
 TECH: Hadoop-Spark Cluster, Linux, ETC and Solidity, Python3, Blockchain using Ethereum, Shell-Script, GIT
 
 
+Challenges completed:
+1. Matic Challenge
+2. Zeit Deployment Challenge - https://src.pyagni.now.sh/
+
+
+
+
 Collaborators: 
 
 1. [Aman Agarwal](https://github.com/amana632)
