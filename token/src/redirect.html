@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=q, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="row container-fluid" style="margin:20px;">
+      <button
+        type="button"
+        onclick="client();"
+        class="btn btn-primary col-md-5"
+      >
+        Client
+      </button>
+      &nbsp;&nbsp;&nbsp;
+      <button
+        type="button"
+        onclick="slave();"
+        class="btn btn-secondary col-md-5"
+      >
+        Slave
+      </button>
+    </div>
+    <script>
+      function client() {
+        window.location.href = "./dashboard/client.html";
+      }
+      function slave() {
+        window.location.href = "./dashboard/slave.html";
+      }
+    </script>
+  </body>
+</html>

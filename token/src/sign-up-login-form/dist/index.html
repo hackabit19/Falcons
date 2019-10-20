@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Sign-Up/Login Form</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="form">  
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
+      
+      <div class="tab-content">
+        <div id="signup">   
+          <h1>Sign Up for Free</h1>
+          
+          <form>
+          
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                Phone<span class="req">*</span>
+              </label>
+              <input id="phone" type="number" required autocomplete="off" />
+            </div>
+        
+            <div class="field-wrap">
+              <label>
+                User Name<span class="req">*</span>
+              </label>
+              <input id="user_name" type="text"required autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Wallet Address<span class="req">*</span>
+            </label>
+            <input id="wallet_add" type="text"required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Set A Password<span class="req">*</span>
+            </label>
+            <input id="password" type="password"required autocomplete="off"/>
+          </div>
+          <div class="field-wrap">
+              <label>
+                Type (Slave/Client)<span class="req">*</span>
+              </label>
+              <input id="type_s" type="password"required autocomplete="off"/>
+            </div>
+          
+          <buttons onclick="signup();" class="button button-block"/>Get Started</button>
+          
+          </form>
+
+        </div>
+        
+        <div id="login">   
+          <h1>Welcome Back!</h1>
+          
+          <form onsubmit="return false">
+          
+            <div class="field-wrap">
+            <label>
+              Phone<span class="req">*</span>
+            </label>
+            <input id="lphone" type="number" required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+              <label>
+                User Name<span class="req">*</span>
+              </label>
+              <input id="lusername" type="text" required autocomplete="off"/>
+            </div>
+
+          <div class="field-wrap">
+            <label>
+              Password<span class="req">*</span>
+            </label>
+            <input id="lpassword" type="password"required autocomplete="off"/>
+          </div>
+          
+          <p class="forgot"><a href="#">Forgot Password?</a></p>
+          
+          <button onclick="signIn();" class="button button-block"/>Log In 1</button>
+          
+          </form>
+
+        </div>
+        
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+  <script>
+
+  // function login1(){
+  //   alert("Heo");
+  //   var phone = document.getElementById("lphone").value;
+  //   var password = document.getElementById("lpassword").value;
+  //   var user_name = document.getElementById("lusername").value;
+  //   var url = "http://192.168.43.110:80/isValidUser?phone=" + phone + "&password=" + password + "&user_name=" + user_name;
+  //   //alert(url);
+  //   // axios.get('http://192.168.43.110:80/isValidUser',{
+  //   //   params: {
+  //   //     phone:phone,
+  //   //     password: password,
+  //   //     user_name: user_name,
+
+  //   //   }
+  //   axios.get(url)
+  //   .then(res => {
+  //             alert("hogaya");
+	// 						console.log(res);
+	// 					}).catch(err => {
+	// 						alert("Wrong credentials");
+  //             console.log(err);
+	// 					});
+  // }
+
+
+  function signup(){
+    var name = document.getElementById("user_name").value;
+    var wallet_add = document.getElementById("wallet_add").value;
+    var password = document.getElementById("password").value;
+    var phone = document.getElementById("phone").value;
+    var type_s = document.getElementById("type_s").value;
+    axios.post("http://192.168.43.110:80/doRegistration",{
+        user_id: phone,
+        user_name: name,
+				phone: phone,
+        wallet_add: wallet_add,
+        password: password,
+        type_s: type_s,
+			}).then(res => {
+        console.log(res);
+        alert("succesful");
+			}).catch(err => {
+					console.log(err);
+			});
+  }
+
+  function signIn() {
+		var phone = document.getElementById("lphone").value;
+		var password = document.getElementById("lpassword").value;
+		var user_name = document.getElementById("lusername").value;
+		axios.get(`http://192.168.43.110:80/isRegisteredUser/${phone}`)
+			.then(res => {
+				if (res.data == "True") {
+					axios.get(`http://192.168.43.110:80/isValidUser?phone=${phone}&password=${password}&user_name=${user_name}`)
+						.then(res => {
+							console.log(res);
+              window.location.href = "./../../index2.html";
+						}).catch(err => {
+							alert("Wrong credentials");
+              console.log(err);
+              window.location.href = "./../../index2.html";
+						})
+				}
+				else
+					alert("User Dosen't Exist");
+			}).catch(err => {
+				alert("User Dosen't Exist");
+				console.log(err);
+			})
+	}
+
+  </script>
+</body>
+</html>

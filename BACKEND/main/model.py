@@ -33,7 +33,7 @@ users_schema = UserSchema(many=True)
 
 class Slave(db.Model):
     __tablename__ = 'slaves'
-    slave_id = = db.Column(db.Integer, primary_key=True)
+    slave_id = db.Column(db.Integer, primary_key=True)
     time_stamp = db.Column(db.String(255))
     data_amount = db.Column(db.String(255))
     phone = db.Column(db.String(255))
@@ -53,7 +53,7 @@ slaves_schema = SlaveSchema(many=True)
 
 class ClientTrans(db.Model):
     __tablename__ = 'clienttrans'
-    clienttrans_id = = db.Column(db.Integer, primary_key=True)
+    clienttrans_id = db.Column(db.Integer, primary_key=True)
     time_stamp_start = db.Column(db.String(255))
     time_stamp_end = db.Column(db.String(255))
     data_amount = db.Column(db.String(255))
@@ -77,7 +77,7 @@ clienttranss_schema = ClientTransSchema(many=True)
 
 class SlaveTrans(db.Model):
     __tablename__ = 'slavetrans'
-    slavetrans_id = = db.Column(db.Integer, primary_key=True)
+    slavetrans_id = db.Column(db.Integer, primary_key=True)
     time_stamp_start = db.Column(db.String(255))
     time_stamp_end = db.Column(db.String(255))
     data_amount = db.Column(db.String(255))

@@ -9,6 +9,14 @@ from main.model import (
     slave_schema,
     slaves_schema,
     SlaveSchema,
+    ClientTrans,
+    ClientTransSchema,
+    clienttrans_schema,
+    clienttranss_schema,
+    SlaveTrans,
+    SlaveTransSchema,
+    slavetrans_schema,
+    slavetranss_schema,
 )
 from flask_marshmallow import Marshmallow
 from main import db
@@ -114,15 +122,45 @@ def isUserNameAvail(user_name):
 @app.route("/doAvail", methods=["POST"])
 def doAvail():
 
-    time_stamp = request.json['time_stamp'].encode('ascii','ignore')
+    time_stamp = request.json['time_stamp']
     data_amount = int(request.json['data_amount'].encode('ascii','ignore'))
     phone = int(request.json['phone'].encode('ascii','ignore'))
 
-    new_request = Request(time_stamp, data_amount, phone)
+    new_request = Slave(time_stamp, data_amount, phone)
 
     db.session.add(new_request)
     db.session.commit()
     return "True"
+
+@app.route("/doClient", methods=["POST"])
+def doClient():
+
+    time_stamp_start = request.json['time_stamp_start']
+    time_stamp_end = request.json['time_stamp_end'].encode('ascii','ignore')
+    data_amount = request.json['data_amount'].encode('ascii','ignore')
+    status = request.json['status'].encode('ascii','ignore')
+    phone = request.json['phone'].encode('ascii','ignore')
+
+    new_request = ClientTrans(time_stamp_start, time_stamp_end, data_amount, status, phone)
+
+    db.session.add(new_request)
+    db.session.commit()
+    return "True"    
+
+@app.route("/doSlave", methods=["POST"])
+def doSlave():
+
+    time_stamp_start = request.json['time_stamp_start']
+    time_stamp_end = request.json['time_stamp_end'].encode('ascii','ignore')
+    data_amount = request.json['data_amount'].encode('ascii','ignore')
+    status = request.json['status'].encode('ascii','ignore')
+    phone = request.json['phone'].encode('ascii','ignore')
+
+    new_request = SlaveTrans(time_stamp_start, time_stamp_end, data_amount, status, phone)
+
+    db.session.add(new_request)
+    db.session.commit()
+    return "True"      
 
 @app.route("/deleteAvail/<phone>", methods=["DELETE"])
 def delete_Avail(phone):
@@ -131,6 +169,36 @@ def delete_Avail(phone):
     db.session.commit()
 
     return "True"
+
+# @app.route("/updatePackage/<package_id>", methods=["PUT"])
+# def updatePackage(package_id):
+#     Package.query.get(package_id)
+
+#     package_data = request.json['package_data'].encode('ascii','ignore')
+#     package_title = request.json['package_title'].encode('ascii','ignore')
+#     package_price = request.json['package_price']
+
+#     Package.package_data = package_data
+#     Package.package_title = package_title
+#     Package.package_price = package_price
+
+#     db.session.commit()
+#     return package_schema.jsonify(user)
+
+# @app.route("/updatePackage/<package_id>", methods=["PUT"])
+# def updatePackage(package_id):
+#     Package.query.get(package_id)
+
+#     package_data = request.json['package_data'].encode('ascii','ignore')
+#     package_title = request.json['package_title'].encode('ascii','ignore')
+#     package_price = request.json['package_price']
+
+#     Package.package_data = package_data
+#     Package.package_title = package_title
+#     Package.package_price = package_price
+
+#     db.session.commit()
+#     return package_schema.jsonify(user)
 
 # @app.route("/isRequestAccepted/<request_id>", methods=["GET"])
 # def isRequestAccepted(request_id):
@@ -306,18 +374,18 @@ def delete_Avail(phone):
 #     data = Booking.query.filter_by(booking_id=booking_id).first()
 #     return booking_schema.jsonify(data)
 
-# @app.route("/getAllBookings", methods=["GET"])
-# def getAllBookings():
-#     data = Booking.query.all()
-#     result = bookings_schema.dump(data)
-#     return jsonify(a=result.data)
+@app.route("/getAllAvail", methods=["GET"])
+def getAllAvail():
+    data = Slave.query.all()
+    result = slaves_schema.dump(data)
+    return jsonify(a=result.data)
 
 
-# @app.route("/getAllUsers", methods=["GET"])
-# def getAllUsers():
-#     data = User.query.all()
-#     result = users_schema.dump(data)
-#     return jsonify(a=result.data)
+@app.route("/getAllUsers", methods=["GET"])
+def getAllUsers():
+    data = User.query.all()
+    result = users_schema.dump(data)
+    return jsonify(a=result)
 
 # @app.route("/getAllData", methods=["GET"])
 # def getAllData():
